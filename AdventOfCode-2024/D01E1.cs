@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdventOfCode_2024.AlgoInputs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,21 +7,13 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode_2024
 {
-    internal class Day01
+    internal class D01E1
     {
-        private List<String> puzzleInput;
+        private List<string> puzzleInput;
 
-        public Day01()
+        public D01E1()
         {
-            GetPuzzleInput();
-        }
-
-        private void GetPuzzleInput()
-        {
-            puzzleInput = File
-                .ReadLines(Environment.GetEnvironmentVariable("D01_P1_FILE_PATH"))
-                .ToList()
-                ;
+            puzzleInput = PuzzleInput.GetPuzzleInput("D01_FILE_PATH");
         }
 
         public int SumCalibrationValues()
