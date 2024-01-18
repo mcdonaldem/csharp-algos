@@ -62,6 +62,7 @@ namespace AdventOfCode_2024.D02
                 ;
         }
 
+        // E1
         public int SumValidGameIds()
         {
             return games
@@ -71,6 +72,7 @@ namespace AdventOfCode_2024.D02
                 ;
         }
 
+        // E2
         public int SumCubeSetPowers()
         {
             return games
