@@ -10,7 +10,7 @@ namespace AdventOfCode_2024
     internal class D01
     {
         private List<string> puzzleInputE1;
-        private List<String> puzzleInputE2;
+        private List<string> puzzleInputE2;
 
         public D01()
         {
@@ -60,6 +60,5 @@ namespace AdventOfCode_2024
                 })
                 .ToList();
         }
-
     }
 }
