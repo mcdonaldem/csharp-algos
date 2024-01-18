@@ -10,16 +10,10 @@ namespace AdventOfCode_2024.D02
     internal class D02
     {
         private List<Game> games;
-        private int maxRed;
-        private int maxGreen;
-        private int maxBlue;
 
         public D02()
         {
             ProcessGameData();
-            maxRed = 12;
-            maxGreen = 13;
-            maxBlue = 14;
         }
 
         private void ProcessGameData()
@@ -66,7 +60,7 @@ namespace AdventOfCode_2024.D02
         public int SumValidGameIds()
         {
             return games
-                .Where(g => g.CubeSets.All(cs => cs.Red <= maxRed && cs.Green <= maxGreen && cs.Blue <= maxBlue))
+                .Where(g => g.CubeSets.All(cs => cs.Red <= 12 && cs.Green <= 13 && cs.Blue <= 14))
                 .Select(g => g.Id)
                 .Sum()
                 ;
