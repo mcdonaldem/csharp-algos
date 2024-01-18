@@ -11,38 +11,24 @@ namespace AdventOfCode_2024
     internal class D01E2
     {
         private List<string> puzzleInput;
-        private Dictionary<string, int> wordToDigit;
-        private Dictionary<int, string> digitToWord;
+        private Dictionary<string, string> wordToDigit;
 
         public D01E2()
         {
             puzzleInput = PuzzleInput
                 .GetPuzzleInput("D01_FILE_PATH");
 
-            wordToDigit = new Dictionary<string, int>()
+            wordToDigit = new Dictionary<string, string>()
             {
-                ["one"] = 1,
-                ["two"] = 2,
-                ["three"] = 3,
-                ["four"] = 4,
-                ["five"] = 5,
-                ["six"] = 6,
-                ["seven"] = 7,
-                ["eight"] = 8,
-                ["nine"] = 9
-            };
-
-            digitToWord = new Dictionary<int, string>()
-            {
-                [1] = "one",
-                [2] = "two",
-                [3] = "three",
-                [4] = "four",
-                [5] = "five",
-                [6] = "six",
-                [7] = "seven",
-                [8] = "eight",
-                [9] = "nine"
+                ["one"] = "o1e",
+                ["two"] = "t2o",
+                ["three"] = "t3e",
+                ["four"] = "f4r",
+                ["five"] = "f5e",
+                ["six"] = "s6x",
+                ["seven"] = "s7n",
+                ["eight"] = "e8t",
+                ["nine"] = "n9e"
             };
 
             ChangeWordsToDigits();
@@ -53,40 +39,18 @@ namespace AdventOfCode_2024
             puzzleInput = puzzleInput
                 .Select(s =>
                 {
-                    if (s.Any(c => char.IsLetter(c)) && wordToDigit.Keys.ToList().Any(k => s.Contains(k)))
+                    var sb = new StringBuilder(s);
+                    if (wordToDigit.Keys.ToList().Any(k => s.Contains(k)))
                     {
-                        var sb = new StringBuilder(s);
-                        for (var i = 0; i < sb.Length; i++)
-                        {
-                            if(wordToDigit.Keys.ToList().All(k => !sb.ToString().Contains(k)))
-                            {
-                                break;
-                            }
-                            if (char.IsLetter(sb[i]))
-                            {
-                                for (var j = 1; j <= sb.Length - i; j++)
-                                {
-                                    var sub = sb.ToString(i, j);
-                                    if (wordToDigit.ContainsKey(sub))
-                                    {
-                                        sb.Remove(i, sub.Length);
-                                        sb.Insert(i, wordToDigit[sub]);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        return sb.ToString();
+                        wordToDigit.Keys.ToList().ForEach(k => sb.Replace(k, wordToDigit[k]));
                     }
-                    return s;
+                    return sb.ToString();
                 })
                 .ToList();
         }
 
         public int SumCalibrationValues()
         {
-            var values = puzzleInput.Select(s => int.Parse(s.First(c => char.IsDigit(c)).ToString() + s.Last(c => char.IsDigit(c)).ToString()))
-                .ToList();
             return puzzleInput.Select(s => int.Parse(s.First(c => char.IsDigit(c)).ToString() + s.Last(c => char.IsDigit(c)).ToString())).Sum();
         }
     }
