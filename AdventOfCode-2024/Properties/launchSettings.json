@@ -3,7 +3,8 @@
     "AdventOfCode-2024": {
       "commandName": "Project",
       "environmentVariables": {
-        "D01_FILE_PATH": "C:\\Users\\erina\\Documents\\GitHub\\csharp-algos\\AdventOfCode-2024\\AlgoInputs\\D01.txt"
+        "D01_FILE_PATH": "C:\\Users\\erina\\Documents\\GitHub\\csharp-algos\\AdventOfCode-2024\\AlgoInputs\\D01.txt",
+        "D02_FILE_PATH": "C:\\Users\\erina\\Documents\\GitHub\\csharp-algos\\AdventOfCode-2024\\AlgoInputs\\D02.txt"
       }
     }
   }
