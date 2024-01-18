@@ -37,9 +37,9 @@ namespace AdventOfCode_2024.D02
                                 {
                                     var data = d.Split(" ");
                                     var quantity = int.Parse(data[0]);
-                                    return Tuple.Create(data[1], quantity);
+                                    return new { Color = data[1], Quantity = quantity};
                                 })
-                                .ToDictionary(t => t.Item1, t => t.Item2)
+                                .ToDictionary(t => t.Color, t => t.Quantity)
                                 ;
                             var cs = new CubeSet()
                             {

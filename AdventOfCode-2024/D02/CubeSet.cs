@@ -8,8 +8,8 @@ namespace AdventOfCode_2024.D02
 {
     internal class CubeSet
     {
-        public int Green { get; set; }
-        public int Red { get; set; }
-        public int Blue { get; set; }
+        public int Green { get; init; }
+        public int Red { get; init; }
+        public int Blue { get; init; }
     }
 }
