@@ -4,6 +4,6 @@ using AdventOfCode_2024.D02;
 
 Console.WriteLine(new D02().SumCubeSetPowers());
 //Console.WriteLine(new D02().SumValidGameIds());
-//Console.WriteLine(new D01E2().SumCalibrationValues());
-//Console.WriteLine(new D01E1().SumCalibrationValues());
+//Console.WriteLine(new D01().SumCalibrationValuesE2());
+//Console.WriteLine(new D01().SumCalibrationValuesE1());
 

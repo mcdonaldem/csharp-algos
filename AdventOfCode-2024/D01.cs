@@ -3,22 +3,39 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AdventOfCode_2024
 {
-    internal class D01E2
+    internal class D01
     {
-        private List<string> puzzleInput;
-        private Dictionary<string, string> wordToDigit;
+        private List<string> puzzleInputE1;
+        private List<String> puzzleInputE2;
 
-        public D01E2()
+        public D01()
         {
-            puzzleInput = PuzzleInput
-                .GetPuzzleInput("D01_FILE_PATH");
+            puzzleInputE1 = PuzzleInput.GetPuzzleInput("D01_FILE_PATH");
+            ChangeWordsToDigits();
+        }
 
-            wordToDigit = new Dictionary<string, string>()
+        public int SumCalibrationValuesE1()
+        {
+            return SumCalibrationValues(puzzleInputE1);
+        }
+
+        public int SumCalibrationValuesE2()
+        {
+            return SumCalibrationValues(puzzleInputE2);
+        }
+
+        private int SumCalibrationValues(List<string> input)
+        {
+            return input.Select(s => int.Parse(s.First(c => char.IsDigit(c)).ToString() + s.Last(c => char.IsDigit(c)).ToString())).Sum();
+        }
+
+        private void ChangeWordsToDigits()
+        {
+            var wordToDigit = new Dictionary<string, string>()
             {
                 ["one"] = "o1e",
                 ["two"] = "t2o",
@@ -31,12 +48,7 @@ namespace AdventOfCode_2024
                 ["nine"] = "n9e"
             };
 
-            ChangeWordsToDigits();
-        }
-
-        private void ChangeWordsToDigits()
-        {
-            puzzleInput = puzzleInput
+            puzzleInputE2 = puzzleInputE1
                 .Select(s =>
                 {
                     var sb = new StringBuilder(s);
@@ -49,9 +61,5 @@ namespace AdventOfCode_2024
                 .ToList();
         }
 
-        public int SumCalibrationValues()
-        {
-            return puzzleInput.Select(s => int.Parse(s.First(c => char.IsDigit(c)).ToString() + s.Last(c => char.IsDigit(c)).ToString())).Sum();
-        }
     }
 }
