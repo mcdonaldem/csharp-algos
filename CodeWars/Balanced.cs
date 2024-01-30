@@ -39,9 +39,7 @@ namespace CodeWars
                     temp = temp >> 1;
                 }
 
-                closed++;
                 str = "(" + str;
-
                 if (str.Length == 2 * n)
                 {
                     output.Add(str);
