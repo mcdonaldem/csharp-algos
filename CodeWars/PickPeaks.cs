@@ -20,33 +20,41 @@ namespace CodeWars
 
             for (int i = 0; i < slopes.Length - 1; i++)
             {
-                if (slopes[i] > 0 && slopes[i + 1] == 0)
-                {
-                    if (IsPlateauWithEnd(i + 1, slopes))
-                    {
-                        output["pos"].Add(i + 1);
-                        output["peaks"].Add(arr[i + 1]);
-                    }
-                }
-                else if (slopes[i] > 0 && slopes[i + 1] < 0)
+                if (slopes[i] > 0 && slopes[i + 1] < 0)
                 {
                     output["pos"].Add(i + 1);
                     output["peaks"].Add(arr[i + 1]);
+                }
+                else if (slopes[i] == 0)
+                {
+                    var result = IsPlateauWithEnd(i, slopes);
+                    if (result.Item1)
+                    {
+                        output["pos"].Add(i);
+                        output["peaks"].Add(arr[i]);
+                    }
+                    i = result.Item2 - 1;
                 }
             }
             return output;
         }
 
-        private static bool IsPlateauWithEnd(int startingIndex, int[] slopes)
+        private static (bool, int) IsPlateauWithEnd(int startingIndex, int[] slopes)
         {
+            var endingIndex = startingIndex;
             for (int i = startingIndex + 1; i < slopes.Length; i++)
             {
+                endingIndex = i;
                 if (slopes[i] < 0)
                 {
-                    return true;
+                    return (true, endingIndex);
+                }
+                if (slopes[i] > 0)
+                {
+                    return (false, endingIndex);
                 }
             }
-            return false;
+            return (false, endingIndex);
         }
     }
 }
