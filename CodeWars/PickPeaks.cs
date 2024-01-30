@@ -20,7 +20,7 @@ namespace CodeWars
 
             for (int i = 0; i < slopes.Length - 1; i++)
             {
-                if (slopes[i] > 0 && slopes[i + 1] <= 0 && (i + 1) != arr.Length - 1)
+                if (slopes[i] > 0 && slopes[i + 1] <= 0)
                 {
                     output["pos"].Add(i + 1);
                     output["peaks"].Add(arr[i + 1]);
