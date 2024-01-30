@@ -26,7 +26,7 @@ namespace CodeWars
                     {
                         if (arr[j] - arr[j - 1] == 0 && arr[j + 1] - arr[j] != 0)
                         {
-                            if(arr[j + 1] - arr[j] < 0)
+                            if (arr[j + 1] - arr[j] < 0)
                             {
                                 plateauEnds = true;
                             }
