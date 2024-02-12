@@ -10,18 +10,13 @@ namespace CodeWars
     {
         public static Tuple<string, int> Encode(string s)
         {
-            var rows = new List<string>();
-            for (int i = 0; i < s.Length; i++)
-            {
-                var first = s.Substring(s.Length - i,i);
-                var second = s.Substring(0, s.Length - i);
-                rows.Add(first + second);
-            }
-            rows = rows
+            var rows = s.Select((c, i) => s.Substring(s.Length - i, i) + s.Substring(0, s.Length - i))
                 .OrderBy(r => r, StringComparer.Ordinal)
                 .ToList()
                 ;
-            return Tuple.Create(new String(rows.Select(r => r.LastOrDefault()).ToArray()), rows.Count() == 0 ? 0 : rows.IndexOf(s));
+            return String.IsNullOrEmpty(s) ? 
+                Tuple.Create(s,0) : 
+                Tuple.Create(new String(rows.Select(r => r.LastOrDefault()).ToArray()), rows.IndexOf(s));
         }
 
         public static string Decode(string s, int i)
@@ -35,7 +30,7 @@ namespace CodeWars
                 }
                 rows = rows.OrderBy(r => r, StringComparer.Ordinal).ToArray();
             }
-            return rows[i];
+            return String.IsNullOrEmpty(s) ? s : rows[i];
         }
     }
 }
