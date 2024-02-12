@@ -10,24 +10,32 @@ namespace CodeWars
     {
         public static Tuple<string, int> Encode(string s)
         {
-            return null;
+            var rows = new List<string>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                var first = s.Substring(s.Length - i,i);
+                var second = s.Substring(0, s.Length - i);
+                rows.Add(first + second);
+            }
+            rows = rows
+                .OrderBy(r => r, StringComparer.Ordinal)
+                .ToList()
+                ;
+            return Tuple.Create(new String(rows.Select(r => r.LastOrDefault()).ToArray()), rows.Count() == 0 ? 0 : rows.IndexOf(s));
         }
 
         public static string Decode(string s, int i)
         {
-            var output = "";
-            var firstColumn = s.Order().ToArray();
-            var indexVisited = new bool[firstColumn.Length];
+            var rows = new string[s.Length];
             for (int j = 0; j < s.Length; j++)
             {
-                output = s[i] + output;
-                indexVisited[i] = true;
-                i = firstColumn
-                    .Select((c, k) => new { Char = c, Index = k })
-                    .Last(a => a.Char.Equals(s[i]) && !indexVisited[a.Index])
-                    .Index;
+                for (int k = 0; k < s.Length; k++)
+                {
+                    rows[k] = s[k] + rows[k];
+                }
+                rows = rows.OrderBy(r => r, StringComparer.Ordinal).ToArray();
             }
-            return output;
+            return rows[i];
         }
     }
 }
