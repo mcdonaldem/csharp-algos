@@ -28,7 +28,10 @@ namespace CodeWars
                 {
                     rows[k] = s[k] + rows[k];
                 }
-                rows = rows.OrderBy(r => r, StringComparer.Ordinal).ToArray();
+                rows = rows
+                    .OrderBy(r => r, StringComparer.Ordinal)
+                    .ToArray()
+                    ;
             }
             return String.IsNullOrEmpty(s) ? s : rows[i];
         }
