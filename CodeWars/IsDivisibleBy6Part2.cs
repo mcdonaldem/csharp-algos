@@ -11,16 +11,15 @@ namespace CodeWars
     {
         public static string[] IsDivisibleBy6(string str)
         {
-            var result = ReplaceStars(str);
-            return new string[0];
+            return ReplaceStars(str);
         }
 
-        private static List<BigInteger> ReplaceStars(string str)
+        private static string[] ReplaceStars(string str)
         {
-            var output = new List<BigInteger>();
+            var output = new List<string>();
             if (str.Count(c => c.Equals('*')) == 0 && BigInteger.Parse(str) % 6 == 0)
             {
-                output.Add(BigInteger.Parse(str));
+                output.Add(str);
             }
             else if (str.Count(c => c.Equals('*')) > 0)
             {
@@ -29,7 +28,7 @@ namespace CodeWars
                     output.AddRange(ReplaceStars(str.Substring(0, str.IndexOf('*')) + i + str.Substring(str.IndexOf('*') + 1)));
                 }
             }
-            return output;
+            return output.ToArray();
         }
     }
 }
