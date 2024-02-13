@@ -1,7 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using CodeWars;
 
-SumByFactors.sumOfDivided(new int[] { 125, 103, -76, 141, 192, -56, 130, 147, -53, 178, 130, 107, 192, 53, 196 });
+IsDivisibleBy6Part2.IsDivisibleBy6("12345678901*3*");
+//SumByFactors.sumOfDivided(new int[] { 125, 103, -76, 141, 192, -56, 130, 147, -53, 178, 130, 107, 192, 53, 196 });
 //BurrowsWheelerTransformation.Encode("");
 //BurrowsWheelerTransformation.Decode("e emnllbduuHB", 2);
 //Console.WriteLine(FindTheSmallest.Smallest(209917));
