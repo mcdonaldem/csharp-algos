@@ -21,7 +21,7 @@ namespace CodeWars
                     nDigits.Insert(j, digit);
                     if(long.Parse(nDigits.ToString()) < output[0])
                     {
-                        output = [long.Parse(nDigits.ToString()), i, j];
+                        output = new long[] { long.Parse(nDigits.ToString()), i, j };
                     }
                 }
             }
