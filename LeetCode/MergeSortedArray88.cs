@@ -13,7 +13,7 @@ namespace LeetCode
             for (int i = m + n - 1; i >= 0; i--)
             {
                 if (n == 0) break;
-                var is1bigger = nums1[m - 1 < 0 ? 0 : m - 1] > nums2[n - 1];
+                var is1bigger = m == 0 ? false : nums1[m - 1 < 0 ? 0 : m - 1] > nums2[n - 1];
                 if (is1bigger)
                 {
                     nums1[i] = nums1[m - 1];
